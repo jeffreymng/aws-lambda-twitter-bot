@@ -9,6 +9,7 @@
   "author": "info@jeffreymng.com",
   "license": "ISC",
   "dependencies": {
+    "markovchain": "^1.0.2",
     "twitter": "^1.7.1"
   }
 }
