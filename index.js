@@ -52,3 +52,5 @@ var useUpperCase = function(wordList) {
   })
   return tmpList[~~(Math.random()*tmpList.length)]
 }
+
+
