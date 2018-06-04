@@ -1,0 +1,14 @@
+{
+  "name": "twitter-bot-jared",
+  "version": "1.0.0",
+  "description": "A twitter bot that tweets for Jared when a button is pressed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "info@jeffreymng.com",
+  "license": "ISC",
+  "dependencies": {
+    "twitter": "^1.7.1"
+  }
+}
