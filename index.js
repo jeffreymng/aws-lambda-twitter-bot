@@ -4,7 +4,7 @@ const MarkovChain = require('markovchain')
 
 let twitter = new Twitter(twitter_credentials);
 
-wordList = "";
+var wordList = "";
 
 exports.tweet = function(event, context) {
   twitter.get(
@@ -18,21 +18,21 @@ exports.tweet = function(event, context) {
     },
     function(error, tweets, response) {
       if (!error) {
-        for (i = 0; i < tweets.length; i++) {
+        for (var i = 0; i < tweets.length; i++) {
           wordList += " ";
-          wordList += tweets[i].full_text
-          wordList = wordList.replace(/[, ]+/g, " ").trim()
+          wordList += tweets[i].full_text;
+          wordList = wordList.replace(/[, ]+/g, " ").trim();
           wordList.replace(/http\S+/, '');
           wordList.replace(/,/, '');
         }
-        markovChain = new MarkovChain(wordList);
+        var markovChain = new MarkovChain(wordList);
         jaredTweet(markovChain);
       }
     }
   )
 }
 
-exports.jaredTweet = function(chain) {
+function jaredTweet(chain) {
   twitter.post(
     'statuses/update',
     {
@@ -40,6 +40,7 @@ exports.jaredTweet = function(chain) {
     },
     function(error, tweet, response) {
       if (error) {
+        console.log(error);
         jaredTweet()
       }
     }
@@ -52,5 +53,3 @@ var useUpperCase = function(wordList) {
   })
   return tmpList[~~(Math.random()*tmpList.length)]
 }
-
-
